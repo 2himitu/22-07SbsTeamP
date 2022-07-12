@@ -10,4 +10,14 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
     ArrayList<Article> Articles =  new ArrayList<>();
 
     List<Article> findByTitle(String title);
+
+    boolean existsByTitle(String title);
+
+    boolean existsByBody(String body);
+
+    List<Article> findByBody(String body);
+
+    boolean existsByTitleAndBody(String title, String body);
+
+    List<Article> findByTitleAndBody(String title, String body);
 }
