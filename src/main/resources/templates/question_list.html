@@ -1,12 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Question List</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
-</head>
+<html layout:decorate="~{layout}">
 <body>
 <div class="container my-3">
+    <div layout:fragment="content" class="container my-3">
     <table class="table">
         <thead class="table-dark">
         <tr>
@@ -25,6 +21,7 @@
         </tr>
         </tbody>
     </table>
+    <a th:href="@{/question/create}" class="btn btn-primary">질문 등록하기</a>
 </div>
 </body>
 </html>
