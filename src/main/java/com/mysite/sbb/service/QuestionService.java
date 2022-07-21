@@ -5,7 +5,6 @@ import com.mysite.sbb.domain.Question;
 import com.mysite.sbb.util.DataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,7 +16,7 @@ public class QuestionService {
     private QuestionRepository questionRepository;
 
 
-    public List<Question> getList(Model model){
+    public List<Question> getList(){
         return questionRepository.findAll();
     }
     public Question getQuestion(Integer id) {
@@ -41,4 +40,10 @@ public class QuestionService {
 
     }
 
+    public void setViewCountWhenLikeAndCreateAnswer(Integer id) {
+        Question question = this.questionRepository.findById(id).get();
+        Integer viewCount = question.getViewCount()-1;
+        question.setViewCount(viewCount);
+        questionRepository.save(question);
+    }
 }

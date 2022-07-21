@@ -31,5 +31,6 @@ public class AnswerService {
         } else {
             answer.setReplyLike(true);
         }
+        this.answerRepository.save(answer);
     }
 }

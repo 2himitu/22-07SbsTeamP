@@ -32,13 +32,14 @@ public class AnswerController {
             return "question_detail";
         }
         this.answerService.create(question, answerForm.getContent());
+        this.questionService.setViewCountWhenLikeAndCreateAnswer(question.getId());
         return String.format("redirect:/question/detail/%s", id);
     }
 
     @PostMapping("/like/{questionId}/{answerId}")
-    public String createAnswer(@PathVariable("questionId") Integer questionId, @PathVariable("answerId") Integer answerId) {
+    public String like(@PathVariable("questionId") Integer questionId, @PathVariable("answerId") Integer answerId) {
         this.answerService.setLike(answerId);
-
+        this.questionService.setViewCountWhenLikeAndCreateAnswer(questionId);
         return String.format("redirect:/question/detail/%s", questionId);
     }
 
