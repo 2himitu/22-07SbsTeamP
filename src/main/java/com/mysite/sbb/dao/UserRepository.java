@@ -1,8 +1,10 @@
 package com.mysite.sbb.dao;
 
-import com.mysite.sbb.domain.User;
+import com.mysite.sbb.domain.SiteUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User,Long> {
+import java.util.Optional;
 
+public interface UserRepository extends JpaRepository<SiteUser,Long> {
+    Optional<SiteUser> findByUsername(String username);
 }
